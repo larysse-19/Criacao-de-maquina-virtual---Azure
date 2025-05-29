@@ -1,4 +1,5 @@
 # Criacao-de-maquina-virtual---Azure
+https://learn.microsoft.com/pt-br/azure/virtual-machines/windows/quick-create-portal 
 
 Digite máquinas virtuais na pesquisa.
 
@@ -41,3 +42,22 @@ PowerShell
 Copiar
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 Quando terminar, feche a conexão RDP com a VM.
+
+Limpar os recursos
+Excluir recursos
+Quando o grupo de recursos, a máquina virtual e todos os recursos relacionados não forem mais necessários, exclua-os.
+
+Na página Visão geral da VM, selecione o link Grupo de recursos.
+Selecione Excluir grupo de recursos na parte superior da página do grupo de recursos.
+Uma página abrirá um aviso de que você está prestes a excluir recursos. Digite o nome do grupo de recursos e selecione Excluir para concluir a exclusão dos recursos e do grupo de recursos.
+Desligamento automático
+Se a VM ainda for necessária, o Azure fornecerá um recurso de desligamento automático para máquinas virtuais a fim de ajudar a gerenciar custos e garantir que você não seja cobrado por recursos não utilizados.
+
+Na seção Operações da VM, selecione a opção Desligamento automático.
+Uma página será aberta na qual você poderá configurar o tempo para o desligamento automático. Selecione a opção Ativado para habilitar e, em seguida, defina uma hora que seja adequada para você.
+Depois de definir a hora, selecione Salvar na parte superior para habilitar a configuração de Desligamento automático.
+ Observação
+
+Lembre-se de configurar o fuso horário corretamente para corresponder aos seus requisitos, pois o UTC (Tempo Universal Coordenado) é a configuração padrão na lista suspensa de fuso horário.
+
+Para obter mais informações, confira Desligamento automático.
