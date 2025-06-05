@@ -1,63 +1,100 @@
 # Criacao-de-maquina-virtual---Azure
 https://learn.microsoft.com/pt-br/azure/virtual-machines/windows/quick-create-portal 
 
-Digite máquinas virtuais na pesquisa.
+🔍 Visão geral simplificada: o que são máquinas virtuais (VMs)?
+Máquinas virtuais (VMs) são computadores criados dentro de um servidor físico, como se fossem “computadores virtuais” rodando dentro de outro. Você pode acessá-las remotamente e usá-las como usaria qualquer outro computador, com sistema operacional, internet, programas etc. No caso do Azure, essas máquinas estão "na nuvem", ou seja, você não precisa ter um computador físico para usá-las — o Azure fornece os recursos de forma online.
 
-Em Serviços, selecione Máquinas virtuais.
+🎯 Para que servem as máquinas virtuais?
+Elas são usadas para várias finalidades, como:
 
-Na página Máquinas virtuais, clique em Criar e selecione Máquina virtual do Azure. A página Criar uma máquina virtual é aberta.
+Hospedar sites e aplicativos
 
-Em Detalhes da instância, insira myVM no Nome da máquina virtual e escolha Windows Server 2022 Datacenter: Azure Edition - x64 Gen 2 na Imagem. Deixe os outros padrões.
+Rodar sistemas operacionais de teste (sem afetar o seu computador)
 
-Em Conta de administrador, forneça um nome de usuário, como azureuser e uma senha. A senha deve ter no mínimo 12 caracteres e atender a requisitos de complexidade definidos.
+Treinar softwares de inteligência artificial
 
-Em Regras de porta de entrada, escolha Permitir portas selecionadas e, em seguida, selecione RDP (3389) e HTTP (80) na lista suspensa.
+Executar bancos de dados
 
-Deixe os padrões restantes e, em seguida, selecione o botão Examinar + criar na parte inferior da página.
+Simular ambientes de trabalho
 
-Após a execução da validação, selecione o botão Criar na parte inferior da página
+Criar ambientes para estudo e aprendizado de TI
 
-Após a conclusão da implantação, selecione Ir para o recurso.
+Economizar com infraestrutura, já que você só paga pelo que usar.
 
-Conectar-se à máquina virtual
-Inicie uma conexão da área de trabalho remota para a máquina virtual. Estas instruções ensinam a se conectar aàsua VM de um computador com Windows. Em um Mac, você precisa de um cliente RDP, como este Cliente de Área de Trabalho Remota da Mac App Store.
+🧱 Explicação de cada etapa e escolha feita no tutorial
+Vamos entender, passo a passo, por que cada escolha foi feita ao criar a máquina virtual:
 
-Selecione Conectar>RDP na página de visão geral de sua máquina virtual.
+1. Nome da máquina virtual: myVM
+Por que é importante?: Serve para identificar sua VM dentro do Azure. Você pode dar qualquer nome.
 
-Captura de tela da página de visão geral da máquina virtual mostrando o local do botão Conectar.
+Sugestão: use nomes que indiquem o propósito, como site-loja, teste-dados, etc.
 
-Na guia Conectar-se ao RDP, mantenha as opções padrão para se conectar por endereço IP pela porta 3389 e clique em Baixar arquivo RDP.
+2. Imagem: Windows Server 2022 Datacenter: Azure Edition - x64 Gen 2
+O que é?: É o sistema operacional que a VM vai usar.
 
-Abra o arquivo RDP baixado e clique em Conectar quando solicitado.
+Por que escolher essa imagem?:
 
-Na janela Segurança do Windows, selecione Mais opções e Usar uma conta diferente. Digite o nome de usuário como localhost\nome de usuário, insira a senha que você criou para a máquina virtual e clique em OK.
+É uma versão otimizada para servidores na nuvem.
 
-Você pode receber um aviso do certificado durante o processo de logon. Clique em Sim ou em Continuar para criar a conexão.
+Boa para aplicações de rede, bancos de dados, sites e serviços web.
 
-Instalar servidor Web
-Para ver a VM em ação, instale o servidor Web do IIS. Abra um prompt do PowerShell na VM e execute o seguinte comando:
+Você também poderia escolher Linux, Ubuntu, Debian, dependendo da sua necessidade.
 
-PowerShell
+3. Zonas de disponibilidade (opcional)
+O que é?: São “zonas” diferentes dentro de um mesmo datacenter.
 
-Copiar
-Install-WindowsFeature -name Web-Server -IncludeManagementTools
-Quando terminar, feche a conexão RDP com a VM.
+Serve para quê?: Garantir que sua VM fique disponível mesmo se uma zona falhar.
 
-Limpar os recursos
-Excluir recursos
-Quando o grupo de recursos, a máquina virtual e todos os recursos relacionados não forem mais necessários, exclua-os.
+Para quem vale a pena?: Projetos críticos que não podem parar, como e-commerce ou aplicativos de banco.
 
-Na página Visão geral da VM, selecione o link Grupo de recursos.
-Selecione Excluir grupo de recursos na parte superior da página do grupo de recursos.
-Uma página abrirá um aviso de que você está prestes a excluir recursos. Digite o nome do grupo de recursos e selecione Excluir para concluir a exclusão dos recursos e do grupo de recursos.
-Desligamento automático
-Se a VM ainda for necessária, o Azure fornecerá um recurso de desligamento automático para máquinas virtuais a fim de ajudar a gerenciar custos e garantir que você não seja cobrado por recursos não utilizados.
+4. Conta de administrador (nome de usuário e senha)
+Por que isso?: Você precisa de acesso para configurar e operar a VM.
 
-Na seção Operações da VM, selecione a opção Desligamento automático.
-Uma página será aberta na qual você poderá configurar o tempo para o desligamento automático. Selecione a opção Ativado para habilitar e, em seguida, defina uma hora que seja adequada para você.
-Depois de definir a hora, selecione Salvar na parte superior para habilitar a configuração de Desligamento automático.
- Observação
+Regras da senha:
 
-Lembre-se de configurar o fuso horário corretamente para corresponder aos seus requisitos, pois o UTC (Tempo Universal Coordenado) é a configuração padrão na lista suspensa de fuso horário.
+Mínimo 12 caracteres
 
-Para obter mais informações, confira Desligamento automático.
+Letras, números e símbolos
+
+Isso protege a segurança da VM
+
+5. Regras de porta de entrada: RDP (3389) e HTTP (80)
+RDP (3389):
+
+Permite acessar a VM remotamente como se fosse seu PC
+
+Útil para ver e controlar o sistema com interface gráfica (como o Windows)
+
+HTTP (80):
+
+Libera o tráfego da web
+
+Necessário se você for hospedar um site ou servidor web, como o IIS
+
+6. Examinar + criar
+Por que isso?: O Azure revisa se todos os dados estão corretos.
+
+Só depois da validação é possível criar a VM.
+
+7. Conectar-se via RDP
+Por que isso?: Para usar o sistema operacional da VM remotamente, como se você estivesse na frente de um computador com Windows.
+
+O acesso é feito por endereço IP e precisa do nome de usuário e senha criados.
+
+8. Instalar o servidor Web (IIS)
+Comando: Install-WindowsFeature -name Web-Server -IncludeManagementTools
+
+O que isso faz?
+
+Instala o Internet Information Services (IIS), que é um servidor web da Microsoft.
+
+Ele permite que a VM hospede um site ou aplicação web.
+
+Depois disso, ao digitar o IP no navegador, você vê a página de boas-vindas do IIS.
+
+9. Limpar os recursos (excluir)
+Por que isso?:
+
+Quando a VM não for mais necessária, você pode apagar tudo para evitar cobranças.
+
+O Azure cobra por tempo de uso, então é importante não deixar VMs ligadas sem uso.
